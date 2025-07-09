@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Générateur de mot de passe - Dark Mode</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #00c67c;
+    }
+
+    label {
+      font-size: 16px;
+      margin-right: 8px;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      width: 60px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      background-color: #2c2c2c;
+      color: #fff;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 15px;
+      font-size: 16px;
+      background-color: #00c67c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #00a96e;
+    }
+
+    #resultat {
+      margin-top: 20px;
+      font-size: 18px;
+      background: #2a2a2a;
+      padding: 10px;
+      border-radius: 6px;
+      word-break: break-all;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🔐 Générateur de mot de passe</h1>
+
+    <label for="longueur">Longueur :</label>
+    <input type="number" id="longueur" min="4" max="40" value="12">
+
+    <button onclick="genererMotDePasse()">Générer</button>
+
+    <div id="resultat"></div>
+  </div>
+
+  <script>
+    function genererMotDePasse() {
+      const longueur = parseInt(document.getElementById("longueur").value);
+      const caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+      let motDePasse = "";
+
+      for (let i = 0; i < longueur; i++) {
+        let index = Math.floor(Math.random() * caracteres.length);
+        motDePasse += caracteres[index];
+      }
+
+      document.getElementById("resultat").textContent = "Mot de passe généré : " + motDePasse;
+    }
+  </script>
+
+</body>
+</html>
